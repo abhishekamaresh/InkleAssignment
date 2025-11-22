@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism AI - Weather & Attractions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">Tourism AI</h1>
+            <p class="tagline">Discover weather and attractions for any place in the world</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="placeInput" 
+                    class="search-input" 
+                    placeholder="Enter a place name (e.g., Paris, Tokyo, New York)"
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="search-btn">
+                    <span class="btn-text">Search</span>
+                    <span class="btn-loader" style="display: none;">⏳</span>
+                </button>
+            </div>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <!-- Place Info -->
+            <div class="place-info">
+                <h2 id="placeName" class="place-name"></h2>
+                <p id="placeLocation" class="place-location"></p>
+            </div>
+
+            <!-- Weather Section -->
+            <div id="weatherSection" class="weather-section">
+                <h3 class="section-title">🌤️ Weather Forecast</h3>
+                
+                <!-- Current Weather Card -->
+                <div id="currentWeather" class="current-weather-card">
+                    <div class="current-weather-content">
+                        <div class="current-temp">
+                            <span id="currentTemp" class="temp-value">--</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <div class="current-condition">
+                            <span id="currentIcon" class="weather-icon">🌤️</span>
+                            <span id="currentCondition" class="condition-text">--</span>
+                        </div>
+                        <div class="current-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Wind</span>
+                                <span id="windSpeed" class="detail-value">-- km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forecast Cards -->
+                <div id="forecastContainer" class="forecast-container">
+                    <!-- Forecast cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Attractions Section -->
+            <div id="attractionsSection" class="attractions-section">
+                <h3 class="section-title">🏛️ Tourist Attractions</h3>
+                <div id="attractionsGrid" class="attractions-grid">
+                    <!-- Attraction cards will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Searching for information...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
